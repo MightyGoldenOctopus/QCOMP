@@ -1,2 +1,2 @@
 # QCOMP
-Documentation and ressources for the QCOMP course
+Documentation and resources for the QCOMP course
