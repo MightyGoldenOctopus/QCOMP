@@ -113,8 +113,6 @@ assert(np.array_equal(computeCNOT(2,0,1) , arr))
 arr =quantumComputer(2,[QuantumGate(TypeOfQuantumGate.NOT,1),QuantumGate(TypeOfQuantumGate.CNOT,1,0)])
 assert(np.array_equal(arr , [0,0,0,1]))
 
-
-
 def computeProbability(tab):
     res = np.zeros([tab.size])
     sum = 0
