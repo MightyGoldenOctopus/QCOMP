@@ -42,9 +42,12 @@ arr = np.array([1.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j])
 comparison = np.array_equal(arr, quantumComputer(3,[]))
 assert(comparison)
 
+def kroneckerProduct(m1,m2):
+    return np.kron(m1,m2)
+
 m1 = [1,2]
 m2 = [[4,5],[6,7]]
-assert(np.array_equal(np.kron(m1,m2) , [[ 4,  5,  8, 10],[ 6,  7, 12, 14]]))
+assert(np.array_equal(kroneckerProduct(m1,m2) , [[ 4,  5,  8, 10],[ 6,  7, 12, 14]]))
 
 
 def computeMatrix(baseMatrix, nbQbit, fQbit):
@@ -62,7 +65,7 @@ arr = [[0., 1., 0., 0.],
  [1., 0., 0., 0.],
  [0., 0., 0., 1.],
  [0., 0., 1., 0.]]
-assert(np.array_equal(createMatFromBaseMatrix(m,2,0), arr))
+assert(np.array_equal(computeMatrix(m,2,0), arr))
 
 arr =quantumComputer(2,[QuantumGate(TypeOfQuantumGate.NOT,0)])
 assert(np.array_equal(arr,[0., 1., 0., 0.]))

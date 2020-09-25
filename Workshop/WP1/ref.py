@@ -5,6 +5,7 @@ Created on Sat Mar 28 18:22:06 2020
 @author: Pio
 """
 
+import math 
 import numpy as np 
 from enum import Enum
 
