@@ -9,28 +9,36 @@ from correction import *
 from ref import quantumComputer as qC
 
 #test empty input
+def testEmptyInput():
+    arr = np.array([1.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j])
+    t1_1 = np.array_equal(arr, quantumComputer(3,[]))
+    arr = np.array([1.+0.j, 0.+0.j, 0.+0.j, 0.+0.j])
+    t1_2 = np.array_equal(arr, quantumComputer(2,[]))
+    arr = np.zeros([16])
+    arr[0] = 1
+    t1_3 = np.array_equal(arr, quantumComputer(4,[]))
+    return t1_1 and t1_2 and t1_3 
 
-arr = np.array([1.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j])
-t1_1 = np.array_equal(arr, quantumComputer(3,[]))
-arr = np.array([1.+0.j, 0.+0.j, 0.+0.j, 0.+0.j])
-t1_2 = np.array_equal(arr, quantumComputer(2,[]))
-arr = np.zeros([16])
-arr[0] = 1
-t1_3 = np.array_equal(arr, quantumComputer(4,[]))
-
-t1 = t1_1 and t1_2 and t1_3 
-
+t1 = False
+try:
+    t1 =testEmptyInput()
+except:
+    pass
 #test kronecker product
+def testKroneckerProduct():
+    m1 = [0,2]
+    m2 = [[4,5],[6,7]]
+    t2_1 = np.array_equal(kroneckerProduct(m1,m2) , [[ 0,  0,  8, 10],[ 0,  0, 12, 14]])
+    m1 = [[4,5],[6,7]]
+    m2 = [[4,5],[6,7]]
+    t2_2   = np.array_equal(kroneckerProduct(m1,m2) , np.kron(m1,m2))
+    return t2_1 and t2_2
 
-m1 = [0,2]
-m2 = [[4,5],[6,7]]
-t2_1 = np.array_equal(kroneckerProduct(m1,m2) , [[ 0,  0,  8, 10],[ 0,  0, 12, 14]])
-
-m1 = [[4,5],[6,7]]
-m2 = [[4,5],[6,7]]
-t2_2   = np.array_equal(kroneckerProduct(m1,m2) , np.kron(m1,m2))
-
-t2 = t2_1 and t2_2
+t2 = False
+try:
+    t2 = testKroneckerProduct()
+except:
+    pass
 
 #test compute matrix
 
@@ -146,4 +154,16 @@ if(t3):
 if(t4):
     mark= 40
 if(t5):
-    
+    mark+=5 
+if(t6):
+    mark = max(mark+10,50)
+if(t7):
+    mark+= 10
+if(t8):
+    mark += 10
+if(t9):
+    mark += 10
+print(mark)
+
+
+
