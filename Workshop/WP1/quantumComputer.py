@@ -1,7 +1,6 @@
 import numpy as np 
 from enum import Enum
 
-from qiskit import QuantumCircuit, execute, Aer
 
 
 #Enumration for each type of gate our quantum computer handle
