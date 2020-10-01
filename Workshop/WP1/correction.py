@@ -4,6 +4,9 @@ import math
 from qiskit import QuantumCircuit, execute, Aer
 
 
+nm = np.array([0,1,1])
+print(nm)
+print(np.array_equal(np.transpose(nm),nm))
 #Enumration for each type of gate our quantum computer handle
 class TypeOfQuantumGate(Enum):
     NOT = 1
