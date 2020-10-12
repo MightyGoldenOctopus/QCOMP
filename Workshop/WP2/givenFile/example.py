@@ -4,8 +4,7 @@ from qiskit import QuantumCircuit, execute, Aer
 
 def example():
     circuit = QuantumCircuit(1)
-    circuit.h(0)
-    return circuit
+    pass
 
 circuit = example()
 sim = Aer.get_backend('statevector_simulator')

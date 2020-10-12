@@ -13,6 +13,8 @@ from qiskit.visualization import plot_histogram
 #implementation of the circuit for nqbit and an oracle
 def dj(n,oracle):
     pass
+    circuit.append(oracle,range(n+1))
+    pass
 
 #This an implementation of Deutsch-Joza oracle provided by IBM
 def dj_oracle(case, n):
@@ -60,15 +62,17 @@ circuit = dj(7,dj_oracle("constant",7))
 
 print(circuit.draw())
 
+circuit.measure_all()
 backend = BasicAer.get_backend('qasm_simulator')
 shots = 1024
 results = execute(circuit, backend=backend, shots=shots).result()
 answer = results.get_counts()
-if(answer['0000000'] == 1024):
-    print("Your Deutsch-Joza algorythm handle well constant oracle")
+if(answer['00000000'] + answer['10000000']== 1024):
+   print("Your Deutsch-Joza algorythm handle well constant oracle.")
 
 circuit = dj(7,dj_oracle("balanced",7))
+circuit.measure_all()
 results = execute(circuit, backend=backend, shots=shots).result()
 answer = results.get_counts()
-if(answer['1111111'] == 1024):
-    print("Your Deutsch-Joza algorythm handle well balanced oracle")  
+if(answer['11111111'] + answer['01111111'] == 1024):
+    print("Your Deutsch-Joza algorythm handle well balanced oracle.")  

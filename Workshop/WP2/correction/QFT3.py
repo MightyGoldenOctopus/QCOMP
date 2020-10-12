@@ -5,7 +5,15 @@ from qiskit import QuantumCircuit, execute, Aer
 from qiskit.quantum_info.operators import Operator
 
 def qft():
-    pass
+    circuit = QuantumCircuit(3)
+    circuit.h(2)
+    circuit.cu1(pi/4,0,2)
+    circuit.cu1(pi/2,1,2)
+    circuit.h(1)
+    circuit.cu1(pi/2,0,1)
+    circuit.h(0)
+    circuit.swap(0,2)
+    return circuit
 
 circuit = qft()
 
