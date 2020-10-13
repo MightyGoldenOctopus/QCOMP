@@ -74,11 +74,11 @@ shots = 1024
 results = execute(circuit, backend=backend, shots=shots).result()
 answer = results.get_counts()
 if(answer['00000000'] + answer['10000000']== 1024):
-   print("Your Deutsch-Joza algorythm handle well constant oracle.")
+   print("Your Deutsch-Joza algorythm handle well constant oracle")
 
 circuit = dj(7,dj_oracle("balanced",7))
 circuit.measure_all()
 results = execute(circuit, backend=backend, shots=shots).result()
 answer = results.get_counts()
 if(answer['11111111'] + answer['01111111'] == 1024):
-    print("Your Deutsch-Joza algorythm handle well balanced oracle.")  
+    print("Your Deutsch-Joza algorythm handle well balanced oracle")  
