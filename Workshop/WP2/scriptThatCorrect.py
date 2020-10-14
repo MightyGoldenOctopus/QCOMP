@@ -5,6 +5,8 @@ from correction.AND import *
 from correction.QFT3 import qft as qft3
 from correction.deutsch import deutsch, dj_oracle
 from correction.QFTN import qft as qftn
+from correction.deutsch_joza import dj
+from correction.deutsch_joza import dj_oracle as djon
 circuit =bellState()
 
 #test bellState
@@ -133,3 +135,33 @@ try:
     t5 =testQFTN()
 except:
     pass
+
+#test dj
+def testdj():
+    circuit = dj(7,djon("constant",7))
+    circuit.measure_all()
+    backend = BasicAer.get_backend('qasm_simulator')
+    shots = 1024
+    results = execute(circuit, backend=backend, shots=shots).result()
+    answer = results.get_counts()
+    a =(answer['00000000'] + answer['10000000']== 1024)
+    circuit = dj(7,djon("balanced",7))
+    circuit.measure_all()
+    results = execute(circuit, backend=backend, shots=shots).result()
+    answer = results.get_counts()
+    b = (answer['11111111'] + answer['01111111'] == 1024)
+    return a and b
+         
+
+t6 = False
+try:
+    t6 = testdj()
+except:
+    pass
+
+mark = 0
+for i in [t1,t2,t3,t4,t5,t6]:
+    if(i):
+        mark +=20
+mark = min(100,mark)
+print (mark)  
